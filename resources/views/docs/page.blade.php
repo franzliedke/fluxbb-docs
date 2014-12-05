@@ -1,5 +1,3 @@
-<h1>HELLAU</h1>
-
 <div>
 
 {!! $index !!}
