@@ -1,14 +1,14 @@
 <?php namespace FluxBB\Docs\Markdown;
 
-use Ciconia\Ciconia;
-use Ciconia\Extension\Gfm\FencedCodeBlockExtension;
+use FluxBB\Markdown\Parser;
+use FluxBB\Markdown\Extension\Gfm\FencedCodeBlockExtension;
 use Illuminate\Contracts\Routing\UrlGenerator;
 
-class CiconiaParser implements ParserInterface {
+class FluxBBMarkdownParser implements ParserInterface {
 
 	public function __construct(UrlGenerator $url)
 	{
-		$this->parser = new Ciconia(new HtmlRenderer($url));
+		$this->parser = new Parser(new HtmlRenderer($url));
 		$this->parser->addExtension(new FencedCodeBlockExtension());
 	}
 

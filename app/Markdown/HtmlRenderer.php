@@ -1,6 +1,6 @@
 <?php namespace FluxBB\Docs\Markdown;
 
-use Ciconia\Renderer\HtmlRenderer as BaseRenderer;
+use FluxBB\Markdown\Renderer\XhtmlRenderer as BaseRenderer;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Support\Str;
 

@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider {
 
 		$this->app->bind(
 			'FluxBB\Docs\Markdown\ParserInterface',
-			'FluxBB\Docs\Markdown\CiconiaParser'
+			'FluxBB\Docs\Markdown\FluxBBMarkdownParser'
 		);
 	}
 
