@@ -12,3 +12,5 @@
 */
 
 $router->get('/', 'WelcomeController@index');
+
+$router->get('{page}', 'DocsController@page');

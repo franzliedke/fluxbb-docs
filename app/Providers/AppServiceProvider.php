@@ -1,6 +1,9 @@
 <?php namespace FluxBB\Docs\Providers;
 
+use FluxBB\Docs\Documentation;
 use Illuminate\Support\ServiceProvider;
+use League\Flysystem\Adapter\Local;
+use League\Flysystem\Filesystem;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -29,6 +32,11 @@ class AppServiceProvider extends ServiceProvider {
 			'Illuminate\Contracts\Auth\Registrar',
 			'FluxBB\Docs\Services\Registrar'
 		);
+
+		$this->app->bind('FluxBB\Docs\Documentation', function () {
+			$filesystem = new Filesystem(new Local($this->app['config']['docs.path']));
+			return new Documentation($filesystem);
+		});
 	}
 
 }
