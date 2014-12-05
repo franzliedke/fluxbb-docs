@@ -2,6 +2,7 @@
 
 use FluxBB\Docs\Documentation;
 use FluxBB\Docs\Http\Requests;
+use FluxBB\Docs\Markdown\ParserInterface;
 
 class DocsController extends Controller {
 
@@ -11,14 +12,14 @@ class DocsController extends Controller {
 	protected $docs;
 
 	/**
-	 * @var \Parsedown
+	 * @var ParserInterface
 	 */
 	protected $parser;
 
-	public function __construct(Documentation $docs, \Parsedown $parsedown)
+	public function __construct(Documentation $docs, ParserInterface $parser)
 	{
 		$this->docs = $docs;
-		$this->parser = $parsedown;
+		$this->parser = $parser;
 	}
 
 	/**
@@ -39,7 +40,7 @@ class DocsController extends Controller {
 	public function page($name)
 	{
 		$contents = $this->docs->get($name);
-		$html = $this->parser->text($contents);
+		$html = $this->parser->parse($contents);
 
 		return view('docs.page', [
 			'index'   => $this->getIndex(),
@@ -50,7 +51,10 @@ class DocsController extends Controller {
 	protected function getIndex()
 	{
 		$contents = $this->docs->getIndex();
-		return $this->parser->text($contents);
+
+		return $this->parser->parse($contents);
 	}
 
 }
+
+
