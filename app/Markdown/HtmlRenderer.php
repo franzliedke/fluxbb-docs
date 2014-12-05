@@ -17,8 +17,8 @@ class HtmlRenderer extends BaseRenderer {
 	{
 		if (Str::endsWith($options['href'], '.md'))
 		{
-			$path = substr($options['href'], 0, -3);
-			$options['href'] = $this->url->to($path);
+			$page = substr($options['href'], 0, -3);
+			$options['href'] = $this->url->route('docs', ['page' => $page]);
 		}
 
 		return parent::renderLink($content, $options);
