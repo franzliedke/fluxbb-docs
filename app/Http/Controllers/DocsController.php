@@ -29,7 +29,7 @@ class DocsController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		return redirect(route('docs', ['page' => 'introduction']));
 	}
 
 	/**

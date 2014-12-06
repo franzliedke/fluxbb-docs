@@ -11,6 +11,5 @@
 |
 */
 
-$router->get('/', 'WelcomeController@index');
-
+$router->get('/', 'DocsController@index');
 $router->get('{page}', ['as' => 'docs', 'uses' => 'DocsController@page'])->where('page', '.+');
